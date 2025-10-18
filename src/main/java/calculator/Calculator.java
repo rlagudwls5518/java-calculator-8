@@ -4,14 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
 
 public class Calculator {
+    Parcing p = new Parcing();
 
-    public static void Run() {
-        Parcing.Numlist.clear();
+    public void Run() {
         InputData();
         Sum();
     }
 
-    private static String InputTest() {
+    private String InputTest() {
         try {
             return Console.readLine();
         } catch (NoSuchElementException e) {
@@ -20,21 +20,21 @@ public class Calculator {
     }
 
     //입력하는 메서드
-    private static void InputData() {
+    private void InputData() {
         System.out.println("덧셈할 문자열을 입력해 주세요.");
         String inputString = InputTest();
 
         if (ExceptionStringEmpty(inputString)) {
             return;
         }
-        Parcing.InputSeperater(inputString);
+        p.InputSeperater(inputString);
     }
 
     //데이터 합치는 메서드
-    private static void Sum() {
+    private void Sum() {
         int sum = 0;
 
-        for (int num : Parcing.Numlist) {
+        for (int num : p.getArray()) {
             System.out.println(num);
             sum += num;
         }
@@ -42,7 +42,7 @@ public class Calculator {
     }
 
     //입력 없거나 빈문자열일때
-    private static boolean ExceptionStringEmpty(String s) {
+    private boolean ExceptionStringEmpty(String s) {
         if (s == null) {
             return true;
         }
