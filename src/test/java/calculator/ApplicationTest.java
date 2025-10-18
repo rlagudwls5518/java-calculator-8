@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class ApplicationTest extends NsTest {
 
     @Test
-    void 빈문자열() {
+    void 빈문자열일경우() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("\n"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -50,7 +50,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 빈문자열_0() {
+    void 입력이_없을_경우() {
         assertSimpleTest(() -> {
             run("");
             assertThat(output()).contains("결과 : 0");
