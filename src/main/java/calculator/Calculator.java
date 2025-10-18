@@ -6,8 +6,10 @@ import java.util.ArrayList;
 public class Calculator {
     static String[] inputDataArray;
     static ArrayList<Integer> Numlist = new ArrayList<>();
+    static String determine = "[,:]";
 
     public static void Run() {
+        Numlist.clear();
         InputData();
         Sum();
     }
@@ -20,7 +22,7 @@ public class Calculator {
 
     //사용자가 입력하고 구분자를 기준으로 나누는 메서드
     private static void InputSeperater() {
-        inputDataArray = Console.readLine().split("[,:]");
+        inputDataArray = Console.readLine().split(determine);
         FindNum(inputDataArray);
         EceptionError(inputDataArray, Numlist);
     }
@@ -29,7 +31,6 @@ public class Calculator {
     private static void FindNum(String[] strings) {
         for (String s : strings) {
             int dataNumber = Integer.parseInt(s.replaceAll("[^0-9-]", ""));
-            //숫자를 추출했는데 배열에 어떻게 넣을 것인가??
             Numlist.add(dataNumber);
         }
     }
@@ -50,10 +51,9 @@ public class Calculator {
 
         for (String s : strings) {
             if (s == null || s.isBlank()) {
-                throw new IllegalArgumentException("문자열은 null 또는 공백일 수 없습니다.");
+                throw new IllegalArgumentException("문자열은 공백일 수 없습니다.");
             }
         }
-        
         for (int a : list) {
             if (a < 0) {
                 throw new IllegalArgumentException("음수는 안됩니다");
