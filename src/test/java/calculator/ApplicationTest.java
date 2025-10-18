@@ -50,9 +50,25 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 빈문자열_0() {
+        assertSimpleTest(() -> {
+            run("");
+            assertThat(output()).contains("결과 : 0");
+        });
+    }
+
+    @Test
     void 커스텀_구분자_사용() {
         assertSimpleTest(() -> {
             run("//;\\n1");
+            assertThat(output()).contains("결과 : 1");
+        });
+    }
+
+    @Test
+    void 숫자만_있을_경우() {
+        assertSimpleTest(() -> {
+            run("1");
             assertThat(output()).contains("결과 : 1");
         });
     }
