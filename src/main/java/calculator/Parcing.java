@@ -14,7 +14,7 @@ public class Parcing {
         inputDataArray = s.split(determine);
 
         FindNum(inputDataArray);
-        EceptionError(inputDataArray, Numlist);
+        EceptionNegativeNumber(inputDataArray, Numlist);
     }
 
     //구분자를 기준으로 분리한 배열에서 숫자만 추출하는 메서드
@@ -34,7 +34,7 @@ public class Parcing {
 
     }
 
-    private static void EceptionError(String[] strings, ArrayList<Integer> list) {
+    private static void EceptionNegativeNumber(String[] strings, ArrayList<Integer> list) {
         for (int a : list) {
             if (a < 0) {
                 throw new IllegalArgumentException("음수는 안됩니다");
