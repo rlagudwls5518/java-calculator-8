@@ -9,12 +9,9 @@ public class Parcing {
 
     //사용자가 입력하고 구분자를 기준으로 나누는 메서드
     public static void InputSeperater(String s) {
-        ExceptionStringEmpty(s);
-
         inputDataArray = s.split(determine);
-
         FindNum(inputDataArray);
-        EceptionNegativeNumber(inputDataArray, Numlist);
+        EceptionNegativeNumber(Numlist);
     }
 
     //구분자를 기준으로 분리한 배열에서 숫자만 추출하는 메서드
@@ -26,15 +23,8 @@ public class Parcing {
         }
     }
 
-    private static void ExceptionStringEmpty(String s) {
-        if (s.trim().isEmpty()) {
-            //System.out.println("결과 : 0");
-            throw new IllegalArgumentException("공백입니다");
-        }
-
-    }
-
-    private static void EceptionNegativeNumber(String[] strings, ArrayList<Integer> list) {
+    //음수예외처리
+    private static void EceptionNegativeNumber(ArrayList<Integer> list) {
         for (int a : list) {
             if (a < 0) {
                 throw new IllegalArgumentException("음수는 안됩니다");
